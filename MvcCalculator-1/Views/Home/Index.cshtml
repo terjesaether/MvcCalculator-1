@@ -1,0 +1,73 @@
+﻿@model MvcCalculator_1.Models.FormValues
+
+@{
+    ViewBag.Title = "MVC Calculator";
+}
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="text-center page-header">MVC Calculator</h1>
+
+    </div>
+    <div class="col-md-6">
+        
+        @using (Html.BeginForm("Index", "Home"))
+        {
+            <div class="form-group">
+                <div class="radio-inline">
+                    @Html.RadioButtonFor(m => m.Operator, "Additon", new { @checked = "checked" }) +
+                </div>
+                <div class="radio-inline">
+                    @Html.RadioButtonFor(m => m.Operator, "Subtraction", false) -
+                </div>
+                <div class="radio-inline">
+                    @Html.RadioButtonFor(m => m.Operator, "Multiplication", false) x
+                </div>
+                <div class="radio-inline">
+                    @Html.RadioButtonFor(m => m.Operator, "Division", false) /
+                </div>
+                <div class="radio-inline">
+                    @Html.RadioButtonFor(m => m.Operator, "Square", new { id="radioSquare" } ) Kva-drat (gjelder bare det første nr.)
+                </div>
+                <div class="radio-inline">
+                    @Html.RadioButtonFor(m => m.Operator, "Sin", new { id="radioSin" }) Si-in (gjelder bare det første nr.)
+                </div>
+                
+            </div>
+            <div class="">
+                @Html.TextBoxFor(m => m.Input1, new { placeholder = "Enter value #1", autocomplete = "off", id="inputbox-1" })
+
+                @Html.ValidationMessageFor(m => m.Input1)
+            </div>
+
+            <br />
+            <div class="">
+                @Html.TextBoxFor(m => m.Input2, new { placeholder = "Enter value #2", autocomplete = "off", id="inputbox-2" })
+
+                @Html.ValidationMessageFor(m => m.Input2)
+            </div>
+
+            <br />
+            <input type="submit" value="Calculate" />
+
+        }
+
+    </div>
+    <div class="col-md-6 result">
+        @if ((ViewBag.Input1 != 0) || (ViewBag.Input2 != 0))
+        {
+            <text>You entered</text> @ViewBag.Input1 <text> </text> @ViewBag.OpText <text> </text> @ViewBag.Input2<text>, and the answer is</text>
+        <span class="answer">@ViewBag.Result</span>
+
+        <br />
+        @ViewBag.Message
+        }
+
+        @Html.ActionLink("Test me", "QueryLinkTest", "Home", new { id=5, seriesID=8, episodeID=7 }, null )
+
+        
+
+    </div>
+</div>
