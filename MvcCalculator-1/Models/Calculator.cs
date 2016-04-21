@@ -15,7 +15,7 @@ namespace MvcCalculator_1.Models
             
             switch (op)
             {
-                case "Additon":
+                case "Addition":
                     result = Add(i1, i2);
                     message = "";
                     opText = "plus";

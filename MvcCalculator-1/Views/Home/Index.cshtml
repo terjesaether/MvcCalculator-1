@@ -12,39 +12,49 @@
 
     </div>
     <div class="col-md-6">
-        
+
         @using (Html.BeginForm("Index", "Home"))
         {
             <div class="form-group">
                 <div class="radio-inline">
-                    @Html.RadioButtonFor(m => m.Operator, "Additon", new { @checked = "checked" }) +
+
+                    @Html.RadioButtonFor(m => m.Operator, "Addition", new { @checked = "checked", id = "Addition" })
+                    @Html.Label("Additon", "Pluss")
                 </div>
                 <div class="radio-inline">
-                    @Html.RadioButtonFor(m => m.Operator, "Subtraction", false) -
+                    @Html.RadioButtonFor(m => m.Operator, "Subtraction", new { id = "Subtraction" })
+                    @Html.Label("Subtraction", "Minus")
                 </div>
                 <div class="radio-inline">
-                    @Html.RadioButtonFor(m => m.Operator, "Multiplication", false) x
+                    @Html.RadioButtonFor(m => m.Operator, "Multiplication", new { id = "Multiplication" })
+                    @Html.Label("Multiplication", "Gange")
                 </div>
                 <div class="radio-inline">
-                    @Html.RadioButtonFor(m => m.Operator, "Division", false) /
+                    @Html.RadioButtonFor(m => m.Operator, "Division", new { id = "Division" })
+                    @Html.Label("Division", "Dele")
+                </div>
+                <br />
+                <div class="radio-inline">
+                    @Html.RadioButtonFor(m => m.Operator, "Square", new { id = "radioSquare" })
+                    @Html.Label("radioSquare", "Kva-drat (gjelder bare det første nr.)")
+                    
                 </div>
                 <div class="radio-inline">
-                    @Html.RadioButtonFor(m => m.Operator, "Square", new { id="radioSquare" } ) Kva-drat (gjelder bare det første nr.)
+                    @Html.RadioButtonFor(m => m.Operator, "Sin", new { id = "radioSin" })
+                    @Html.Label("radioSin", "Si-in (gjelder bare det første nr.)")
+                    
                 </div>
-                <div class="radio-inline">
-                    @Html.RadioButtonFor(m => m.Operator, "Sin", new { id="radioSin" }) Si-in (gjelder bare det første nr.)
-                </div>
-                
+
             </div>
             <div class="">
-                @Html.TextBoxFor(m => m.Input1, new { placeholder = "Enter value #1", autocomplete = "off", id="inputbox-1" })
+                @Html.TextBoxFor(m => m.Input1, new { placeholder = "Enter value #1", autocomplete = "off", id = "inputbox-1" })
 
                 @Html.ValidationMessageFor(m => m.Input1)
             </div>
 
             <br />
             <div class="">
-                @Html.TextBoxFor(m => m.Input2, new { placeholder = "Enter value #2", autocomplete = "off", id="inputbox-2" })
+                @Html.TextBoxFor(m => m.Input2, new { placeholder = "Enter value #2", autocomplete = "off", id = "inputbox-2" })
 
                 @Html.ValidationMessageFor(m => m.Input2)
             </div>
@@ -59,15 +69,15 @@
         @if ((ViewBag.Input1 != 0) || (ViewBag.Input2 != 0))
         {
             <text>You entered</text> @ViewBag.Input1 <text> </text> @ViewBag.OpText <text> </text> @ViewBag.Input2<text>, and the answer is</text>
-        <span class="answer">@ViewBag.Result</span>
+            <span class="answer">@ViewBag.Result</span>
 
-        <br />
-        @ViewBag.Message
+            <br />
+            @ViewBag.Message
         }
 
-        
 
-        
+
+
 
     </div>
 </div>
